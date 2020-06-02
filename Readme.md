@@ -2,6 +2,18 @@
 
 This is a TypeScript library inspired by the Clojure(script) components lib by Stuart Sierra. It's job is to manage dependency and lifecycle of statefull components in your application.
 
+## Install
+
+```
+npm i ts-system-components
+```
+
+or
+
+```
+yarn add ts-system-components
+```
+
 ## How to use
 
 Each component of your system should implement the `Component` protocol. The `Component` protocol require two methods,
