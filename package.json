@@ -1,9 +1,12 @@
 {
   "name": "ts-system-components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Dependency and Lifecycle library inspired by the Clojure components lib",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "repository": "https://github.com/leoiacovini/ts-system-components",
   "author": "Leonardo Iacovini",
   "license": "MIT",
