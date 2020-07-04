@@ -1,6 +1,6 @@
 # ts-system-components
 
-This is a TypeScript library inspired by the Clojure(script) components lib by Stuart Sierra. It's job is to manage dependency and lifecycle of statefull components in your application.
+This is a TypeScript library inspired by the [Clojure(script) components lib by Stuart Sierra](https://github.com/stuartsierra/component). Its job is to manage dependencies and lifecycle of statefull components in your application.
 
 ## Install
 
@@ -16,10 +16,10 @@ yarn add ts-system-components
 
 ## How to use
 
-Each component of your system should implement the `Component` protocol. The `Component` protocol require two methods,
-the `start` and `stop`, each one should be responsible for starting and stopping the component. (they should return a Promise, and are usually used with async).
+Each component of your system should implement the `Component` protocol. The `Component` protocol requires two methods, `start` and `stop`. These methods should be responsible for starting and stopping the component. They should return a Promise, and are usually used with async.
+
 ```ts
-class Database extends Component {
+class Database implements Component {
 
   // Make this component require the Config component.
   private readonly config: Config
@@ -38,11 +38,11 @@ class Database extends Component {
 }
 ```
 
-After having your components, you can group them in a System, to describe dependency between them.
+After defining your components, you can group them in a System, to describe the dependencies between them.
 
-You shoould make your system extend the `System` class, and each component should be a property annotated with the
-`<YourSystemName>.Using()` Decorator. This Decorator receive two arguments, the first is the dependencies of this 
-components (that should be other components declared in your system), and a builder function, that will receive a map
+Your system should extend the `System` class, and each component should be a property annotated with the
+`<YourSystemName>.Using()` Decorator. This Decorator receives two arguments. The first is the dependencies of this 
+component, this should be a list of other components declared in your system. The second is a builder function which will receive a map
 with the dependencies you requested, and should return a new instance of you component.
 
 ```ts
@@ -58,7 +58,7 @@ class MySystem extends System {
 ```
 
 To start the system you can just create a new instance and call `.start()`
-The library will ensure that each component is instanciated and started before being provided to the downstream
+The library will ensure that each component is instantiated and started before being provided to the downstream
 components.
 
 ```ts
